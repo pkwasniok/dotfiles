@@ -1,145 +1,141 @@
--- Plugins
-require("packer").startup(function(use)
+-- Neovim configuration file by pkwasniok (01.2024)
+
+-- Packer
+require("packer").startup(function (use)
     use("wbthomason/packer.nvim")
-    use("nvim-lua/plenary.nvim")
-
-    use("projekt0n/caret.nvim")
-    use("echasnovski/mini.nvim")
+    use("rebelot/kanagawa.nvim")
     use("nvim-lualine/lualine.nvim")
-    use("nvim-tree/nvim-tree.lua")
-    use("ThePrimeagen/harpoon")
+    use("nvim-tree/nvim-web-devicons")
+    use("nvim-lua/plenary.nvim")
     use("nvim-telescope/telescope.nvim")
-
     use("nvim-treesitter/nvim-treesitter")
-
-    use("hrsh7th/nvim-cmp")
+    use("neovim/nvim-lspconfig")
+    use("hrsh7th/vim-vsnip")
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
-
-    use("neovim/nvim-lspconfig")
+    use("hrsh7th/cmp-vsnip")
+    use("hrsh7th/nvim-cmp")
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
+
+    use("windwp/nvim-ts-autotag")
+    use("tpope/vim-surround")
+    use("m4xshen/autoclose.nvim")
+    use("ThePrimeagen/harpoon")
+    use("stevearc/oil.nvim")
+    use("numToStr/Comment.nvim")
 end)
 
 -- Colorscheme
-vim.o.background = "dark"
-vim.cmd("colorscheme caret")
+vim.cmd.colorscheme("kanagawa-dragon")
 
--- Configuration
-vim.g.mapleader = " "
-
+-- Options
 vim.opt.mouse = ""
 
 vim.opt.number = true
+
 vim.opt.relativenumber = true
-vim.opt.cursorline = true
-vim.opt.scrolloff = 10
+vim.opt.numberwidth = 4
 
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
-vim.opt.shiftwidth = 4
+
+vim.opt.completeopt = "menuone,noselect"
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 5
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
+vim.opt.shell = "pwsh.exe"
 
 -- Keymaps
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<leader><leader>", ":bp<CR>")
+vim.g.mapleader = " "
 
--- Autopairs
-require("mini.pairs").setup()
+vim.keymap.set({"n", "i", "v", "c"}, "<F12>", "<ESC>")
+vim.keymap.set({"t"}, "<F12>", "<C-\\><C-N>")
 
--- Comments
-require("mini.comment").setup()
+vim.keymap.set({"n", "v"}, "<C-j>", "<C-d>zz")
+vim.keymap.set({"n", "v"}, "<C-k>", "<C-u>zz")
 
--- Indentscopes
-require("mini.indentscope").setup()
+vim.keymap.set("n", "<C-p>", "<cmd>:Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>f", "<cmd>:Telescope live_grep<cr>")
 
--- Move
-require("mini.move").setup()
+vim.keymap.set("n", "<leader><leader>", require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set("n", "<leader>1", function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set("n", "<leader>2", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<leader>3", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<leader>4", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<C-a>", require("harpoon.mark").add_file)
 
--- Trailspace
-require("mini.trailspace").setup()
-
--- File tree
-require("nvim-tree").setup({})
-vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<cr>")
-
--- Harpoon
-local harpoon_mark = require("harpoon.mark")
-local harpoon_ui = require("harpoon.ui")
-vim.keymap.set("n", "<M-e>", harpoon_ui.toggle_quick_menu)
-vim.keymap.set({"n", "i"}, "<M-a>", harpoon_mark.add_file)
-vim.keymap.set({"n", "i"}, "<M-h>", function() harpoon_ui.nav_file(1) end)
-vim.keymap.set({"n", "i"}, "<M-j>", function() harpoon_ui.nav_file(2) end)
-vim.keymap.set({"n", "i"}, "<M-k>", function() harpoon_ui.nav_file(3) end)
-vim.keymap.set({"n", "i"}, "<M-l>", function() harpoon_ui.nav_file(4) end)
-
--- Telescope
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
-
--- Statusline
+-- Lualine
 require("lualine").setup({
     sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
-        lualine_c = { },
-        lualine_x = { "location" },
-        lualine_y = { "filename", "encoding" },
-        lualine_z = { },
-    },
-    options = {
-        component_separators = "",
-    },
+        lualine_a = {"mode"},
+        lualine_b = {"branch"},
+        lualine_c = {"filename"},
+        lualine_x = {"encoding"},
+        lualine_y = {},
+        lualine_z = {},
+    }
+})
+
+-- Telescope
+require("telescope").setup({})
+
+-- Treesitter
+require("nvim-treesitter.configs").setup({
+    ensure_installed = {"lua", "json", "toml", "yaml", "html", "javascript", "typescript", "rust", "astro"},
+    highlight = { enable = true },
+    autotag = { enable = true },
 })
 
 -- Completition
 local cmp = require("cmp")
-local cmp_capabilities = require("cmp_nvim_lsp")
 cmp.setup({
-    sources = cmp.config.sources({
-        { name = "buffer" },
-        { name = "path" },
-        { name = "nvim_lsp" },
-    }),
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end
+    },
     mapping = cmp.mapping.preset.insert({
-        ["<C-Space>"] = cmp.mapping.complete({}),
-        ["<CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
+        ["<CR>"] = cmp.mapping({
+            i = function(fallback)
+                if cmp.visible() and cmp.get_active_entry() then
+                    cmp.confirm()
+                else
+                    fallback()
+                end
+            end
         }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                fallback()
-            end
-        end, { "n", "i" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            else
-                fallback()
-            end
-        end, { "n", "i" })
+    }),
+    sources = cmp.config.sources({
+        {name = "nvim_lsp"},
+        {name = "vsnip"},
+        {name = "buffer"},
+        {name = "path"},
     })
 })
 
--- Treesitter
-require("nvim-treesitter.configs").setup({
-    ensure_installed = { "json", "yaml", "toml", "lua", "markdown", "html", "python", "rust", "typescript", "css", "typescript", "prisma", "svelte" },
-    highlight = { enable = true },
-})
-
--- Language servers
-local lspconfig = require("lspconfig")
-local mason = require("mason").setup()
-local mason_lspconfig = require("mason-lspconfig").setup()
+-- LSP
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+require("mason").setup()
+require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers({
     function(server_name)
-        lspconfig[server_name].setup({})
+        require("lspconfig")[server_name].setup({ capabilities = capabilities })
     end
 })
+
+-- Addons
+require("autoclose").setup()
+require("oil").setup()
+require("Comment").setup()
 
