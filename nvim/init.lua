@@ -1,9 +1,9 @@
 -- Neovim configuration file by pkwasniok (01.2024)
 
--- Packer
+-- Plugins
 require("packer").startup(function (use)
     use("wbthomason/packer.nvim")
-    use("rebelot/kanagawa.nvim")
+    use("neanias/everforest-nvim")
     use("nvim-lualine/lualine.nvim")
     use("nvim-tree/nvim-web-devicons")
     use("nvim-lua/plenary.nvim")
@@ -20,21 +20,19 @@ require("packer").startup(function (use)
     use("williamboman/mason-lspconfig.nvim")
 
     use("windwp/nvim-ts-autotag")
-    use("tpope/vim-surround")
-    use("m4xshen/autoclose.nvim")
+    use("ggandor/leap.nvim")
     use("ThePrimeagen/harpoon")
     use("stevearc/oil.nvim")
     use("numToStr/Comment.nvim")
 end)
 
 -- Colorscheme
-vim.cmd.colorscheme("kanagawa-dragon")
+vim.cmd.colorscheme("everforest")
 
 -- Options
 vim.opt.mouse = ""
 
 vim.opt.number = true
-
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
 
@@ -46,21 +44,21 @@ vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
-vim.opt.completeopt = "menuone,noselect"
-
-vim.opt.termguicolors = true
-
 vim.opt.scrolloff = 5
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
-vim.opt.shell = "pwsh.exe"
+vim.opt.shell = "/bin/zsh"
+
+vim.opt.completeopt = "menuone,noselect"
+vim.opt.termguicolors = true
+
+vim.opt.hlsearch = false
 
 -- Keymaps
 vim.g.mapleader = " "
 
-vim.keymap.set({"n", "i", "v", "c"}, "<F12>", "<ESC>")
-vim.keymap.set({"t"}, "<F12>", "<C-\\><C-N>")
+vim.keymap.set({"t"}, "<ESC>", "<C-\\><C-N>")
 
 vim.keymap.set({"n", "v"}, "<C-j>", "<C-d>zz")
 vim.keymap.set({"n", "v"}, "<C-k>", "<C-u>zz")
@@ -69,10 +67,10 @@ vim.keymap.set("n", "<C-p>", "<cmd>:Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>f", "<cmd>:Telescope live_grep<cr>")
 
 vim.keymap.set("n", "<leader><leader>", require("harpoon.ui").toggle_quick_menu)
-vim.keymap.set("n", "<leader>1", function() require("harpoon.ui").nav_file(1) end)
-vim.keymap.set("n", "<leader>2", function() require("harpoon.ui").nav_file(2) end)
-vim.keymap.set("n", "<leader>3", function() require("harpoon.ui").nav_file(2) end)
-vim.keymap.set("n", "<leader>4", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<leader>h", function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set("n", "<leader>j", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<leader>k", function() require("harpoon.ui").nav_file(3) end)
+vim.keymap.set("n", "<leader>l", function() require("harpoon.ui").nav_file(4) end)
 vim.keymap.set("n", "<C-a>", require("harpoon.mark").add_file)
 
 -- Lualine
@@ -135,7 +133,8 @@ require("mason-lspconfig").setup_handlers({
 })
 
 -- Addons
-require("autoclose").setup()
 require("oil").setup()
 require("Comment").setup()
+require("leap").create_default_mappings()
+require("nvim-ts-autotag").setup()
 
