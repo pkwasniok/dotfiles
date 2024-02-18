@@ -1,0 +1,1 @@
+ - [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans)
