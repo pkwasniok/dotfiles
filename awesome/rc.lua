@@ -154,15 +154,18 @@ awful.screen.connect_for_each_screen(function(s)
     -- Import widgets
     local clock = require("widgets.clock")
     local cpu_monitor = require("widgets.cpu_monitor")
+    local battery = require("widgets.battery")
 
     -- Setup widgets
     clock.setup()
     cpu_monitor.setup()
+    battery.setup()
 
     -- Update widgets
     gears.timer.start_new(10, function()
         clock.update()
         cpu_monitor.update()
+        battery.update()
 
         return true
     end)
@@ -206,6 +209,8 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            battery.widget,
+            wibox.widget.textbox(" | "),
             cpu_monitor.widget,
             wibox.widget.textbox(" | "),
             clock.widget,
