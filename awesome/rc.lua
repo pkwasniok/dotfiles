@@ -55,28 +55,23 @@ editor_cmd = terminal .. " -e " .. editor
 
 
 
-local portal = require("widgets.portal")
-portal.setup()
-
-
-
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
+    -- awful.layout.suit.floating,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.max,
+    -- awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.magnifier,
+    -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -149,23 +144,23 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8" }, s, awful.layout.layouts[2])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8" }, s, awful.layout.layouts[1])
 
     -- Import widgets
     local clock = require("widgets.clock")
     local cpu_monitor = require("widgets.cpu_monitor")
-    local battery = require("widgets.battery")
+    local battery_monitor = require("widgets.battery_monitor")
 
     -- Setup widgets
     clock.setup()
     cpu_monitor.setup()
-    battery.setup()
+    battery_monitor.setup()
 
     -- Update widgets
     gears.timer.start_new(10, function()
         clock.update()
         cpu_monitor.update()
-        battery.update()
+        battery_monitor.update()
 
         return true
     end)
@@ -207,14 +202,17 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            battery.widget,
-            wibox.widget.textbox(" | "),
-            cpu_monitor.widget,
-            wibox.widget.textbox(" | "),
-            clock.widget,
-            s.mylayoutbox,
+        {
+            widget = wibox.container.margin,
+            right = 5,
+            left = 5,
+            {
+                layout = wibox.layout.fixed.horizontal,
+                spacing = 10,
+                battery_monitor.widget,
+                cpu_monitor.widget,
+                clock.widget,
+            }
         },
     }
 end)
@@ -230,10 +228,22 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.spawn.with_shell("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn.with_shell("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") end),
+    awful.key({ }, "XF86AudioMute", function () awful.spawn.with_shell("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") end),
+
+    awful.key({ }, "XF86AudioPlay", function () awful.spawn.with_shell("playerctl play-pause") end),
+    awful.key({ }, "XF86AudioNext", function () awful.spawn.with_shell("playerctl next") end),
+    awful.key({ }, "XF86AudioPrev", function () awful.spawn.with_shell("playerctl previous") end),
+
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn.with_shell("xbaclight -inc 10") end),
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn.with_shell("xbacklight -dec 10") end),
+
     awful.key({ "Shift" }, "Print", function () awful.spawn.with_shell("maim | xclip -selection clipboard -target image/png -i") end,
               {description="capture screen", group="utils"}),
     awful.key({ }, "Print", function () awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png -i") end,
-              {description="capture screen selection", group="utils"}),
+              {description="capture selection", group="utils"}),
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -242,7 +252,6 @@ globalkeys = gears.table.join(
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
-    awful.key({ modkey, }, "space", function() portal.toggle() end, { description = "Open portal", group="utils" }),
 
     awful.key({ modkey,           }, "j",
         function ()

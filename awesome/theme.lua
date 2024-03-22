@@ -13,8 +13,8 @@ local theme = {}
 
 theme.font          = "Rubik 8"
 
-theme.bg_normal     = "#1f1f1f"
-theme.bg_focus      = "#2d2d2d"
+theme.bg_normal     = "#000000"
+theme.bg_focus      = "#000000"
 theme.bg_urgent     = "#2d2d2d"
 theme.bg_minimize   = "#2d2d2d"
 theme.bg_systray    = theme.bg_normal
@@ -44,11 +44,12 @@ theme.border_marked = "#a9a9a9"
 --theme.taglist_bg_focus = "#ff0000"
 
 theme.taglist_spacing = dpi(1)
+theme.taglist_bg_focus = "#1b1b1b"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
+    taglist_square_size, theme.fg_focus
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
@@ -99,7 +100,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path.."default/wallpapers/wallpaper.jpg"
+theme.wallpaper = "~/.config/awesome/wallpaper.jpeg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

@@ -4,6 +4,7 @@ local clock = { widget = nil }
 
 function clock.setup()
     clock.widget = wibox.widget.textbox()
+    clock.widget.font = "Rubik Bold 8"
     clock.update()
 end
 
