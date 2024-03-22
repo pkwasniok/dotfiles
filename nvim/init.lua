@@ -3,7 +3,10 @@
 -- Plugins
 require("packer").startup(function (use)
     use("wbthomason/packer.nvim")
+
     use("neanias/everforest-nvim")
+    use("catppuccin/nvim")
+
     use("nvim-lualine/lualine.nvim")
     use("nvim-tree/nvim-web-devicons")
     use("nvim-lua/plenary.nvim")
@@ -27,7 +30,7 @@ require("packer").startup(function (use)
 end)
 
 -- Colorscheme
-vim.cmd.colorscheme("everforest")
+vim.cmd.colorscheme("catppuccin-macchiato")
 
 -- Options
 vim.opt.mouse = ""
@@ -47,6 +50,8 @@ vim.opt.autoindent = true
 vim.opt.scrolloff = 5
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
+
+vim.opt.colorcolumn = "80"
 
 vim.opt.shell = "/bin/zsh"
 
