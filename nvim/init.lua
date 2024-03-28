@@ -30,7 +30,8 @@ require("packer").startup(function (use)
 end)
 
 -- Colorscheme
-vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd.colorscheme("everforest")
+-- vim.cmd.colorscheme("catppuccin-macchiato")
 
 -- Options
 vim.opt.mouse = ""

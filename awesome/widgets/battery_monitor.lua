@@ -21,9 +21,9 @@ function battery_monitor.update()
     -- Update widget text
     if string.find(battery_status, "Discharging") ~= nil then
         battery_monitor.widget.text = string.format("BAT(-): %d%%", battery_capacity)
-    elseif string.find(battery_status, "Charging") ~= nil and battery_capacity < 100 then
+    elseif string.find(battery_status, "Charging") then
         battery_monitor.widget.text = string.format("BAT(+): %d%%", battery_capacity)
-    elseif string.find(battery_status, "Charging") ~= nil and battery_capacity == 100 then
+    elseif string.find(battery_status, "Full") then
         battery_monitor.widget.text = ""
     end
 end

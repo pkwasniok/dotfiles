@@ -14,9 +14,13 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local dbus = dbus
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -43,6 +47,8 @@ do
 end
 -- }}}
 
+
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "/default/theme.lua")
@@ -52,8 +58,6 @@ beautiful.init("/home/pkwasniok/.config/awesome/theme.lua")
 terminal = "kitty"
 editor = "nvim"
 editor_cmd = terminal .. " -e " .. editor
-
-
 
 modkey = "Mod4"
 
@@ -78,11 +82,13 @@ awful.layout.layouts = {
 }
 -- }}}
 
--- {{{ Menu
 
--- Menubar configuration
+
+-- {{{ Menu
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
+
+
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -149,32 +155,34 @@ awful.screen.connect_for_each_screen(function(s)
     -- Import widgets
     local clock = require("widgets.clock")
     local cpu_monitor = require("widgets.cpu_monitor")
+    local gpu_monitor = require("widgets.gpu_monitor")
     local battery_monitor = require("widgets.battery_monitor")
 
     -- Setup widgets
     clock.setup()
     cpu_monitor.setup()
+    gpu_monitor.setup()
     battery_monitor.setup()
 
     -- Update widgets
     gears.timer.start_new(10, function()
         clock.update()
         cpu_monitor.update()
+        gpu_monitor.update()
         battery_monitor.update()
 
         return true
     end)
 
-    -- Create a promptbox for each screen
+    -- Widgets
     s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
                            awful.button({ }, 1, function () awful.layout.inc( 1) end),
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -196,20 +204,24 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
-        { -- Left widgets
+        -- Left widgets
+        {
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
+        -- Middle widget
+        s.mytasklist,
+        -- Right widgets
         {
             widget = wibox.container.margin,
             right = 5,
             left = 5,
             {
                 layout = wibox.layout.fixed.horizontal,
-                spacing = 10,
+                spacing = 5,
                 battery_monitor.widget,
+                -- gpu_monitor.widget,
                 cpu_monitor.widget,
                 clock.widget,
             }
@@ -218,27 +230,31 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+
+
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+-- Change workspace on mouse scroll
+-- root.buttons(gears.table.join(
+--     awful.button({ }, 4, awful.tag.viewnext),
+--     awful.button({ }, 5, awful.tag.viewprev)
+-- ))
 -- }}}
+
 
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    -- Media keys
     awful.key({ }, "XF86AudioLowerVolume", function () awful.spawn.with_shell("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") end),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn.with_shell("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") end),
     awful.key({ }, "XF86AudioMute", function () awful.spawn.with_shell("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") end),
-
     awful.key({ }, "XF86AudioPlay", function () awful.spawn.with_shell("playerctl play-pause") end),
     awful.key({ }, "XF86AudioNext", function () awful.spawn.with_shell("playerctl next") end),
     awful.key({ }, "XF86AudioPrev", function () awful.spawn.with_shell("playerctl previous") end),
-
-    awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn.with_shell("xbaclight -inc 10") end),
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn.with_shell("xbacklight -inc 10") end),
     awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn.with_shell("xbacklight -dec 10") end),
 
+    -- Screenshot
     awful.key({ "Shift" }, "Print", function () awful.spawn.with_shell("maim | xclip -selection clipboard -target image/png -i") end,
               {description="capture screen", group="utils"}),
     awful.key({ }, "Print", function () awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png -i") end,
@@ -306,10 +322,6 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
-    -- awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-    --           {description = "select next", group = "layout"}),
-    -- awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-    --           {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -323,20 +335,6 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
-
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
@@ -454,6 +452,8 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 -- }}}
 
+
+
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
@@ -511,6 +511,8 @@ awful.rules.rules = {
     --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
+
+
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
@@ -575,6 +577,8 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
 
 -- Round corners
 client.connect_signal("manage", function(c)

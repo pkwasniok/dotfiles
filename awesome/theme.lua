@@ -1,6 +1,6 @@
----------------------------
--- Default awesome theme --
----------------------------
+----------------------
+-- Everforest theme --
+----------------------
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
@@ -11,24 +11,42 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
+
+
+local fg_normal = "#d3c6aa"
+local bg_normal = "#232a2e"
+
+local fg_focus = "#d3c6aa"
+local bg_focus = "#3d484d"
+
+local fg_red = "#e67e80"
+local bg_red = "#543a48"
+
+
+
 theme.font          = "Rubik 8"
 
-theme.bg_normal     = "#000000"
-theme.bg_focus      = "#000000"
-theme.bg_urgent     = "#2d2d2d"
-theme.bg_minimize   = "#2d2d2d"
-theme.bg_systray    = theme.bg_normal
+theme.bg_normal     = bg_normal
+theme.bg_focus      = bg_focus
+theme.bg_urgent     = bg_red
+theme.bg_minimize   = bg_normal
+theme.bg_systray    = bg_normal
 
-theme.fg_normal     = "#a9a9a9"
-theme.fg_focus      = "#a9a9a9"
-theme.fg_urgent     = "#a9a9a9"
-theme.fg_minimize   = "#a9a9a9"
+theme.fg_normal     = fg_normal
+theme.fg_focus      = fg_focus
+theme.fg_urgent     = fg_red
+theme.fg_minimize   = fg_normal
 
-theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(2)
-theme.border_normal = "#1f1f1f"
-theme.border_focus  = "#a9a9a9"
-theme.border_marked = "#a9a9a9"
+theme.useless_gap   = dpi(8)
+theme.border_width  = dpi(3)
+theme.border_normal = bg_normal
+theme.border_focus  = bg_focus
+theme.border_marked = bg_focus
+
+theme.taglist_spacing = dpi(1)
+theme.taglist_bg_focus = bg_focus
+
+
 
 -- There are other variable sets
 -- overriding the default one when
@@ -42,9 +60,6 @@ theme.border_marked = "#a9a9a9"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-
-theme.taglist_spacing = dpi(1)
-theme.taglist_bg_focus = "#1b1b1b"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -100,7 +115,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/.config/awesome/wallpaper.jpeg"
+theme.wallpaper = "~/.config/awesome/assets/wallpaper_1.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
