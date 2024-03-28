@@ -18,6 +18,9 @@ function battery_monitor.update()
     if not file then return false end
     local battery_status = file:read("a")
 
+    -- Close file
+    file:close()
+
     -- Update widget text
     if string.find(battery_status, "Discharging") ~= nil then
         battery_monitor.widget.text = string.format("BAT(-): %d%%", battery_capacity)

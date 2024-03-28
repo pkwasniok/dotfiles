@@ -145,6 +145,13 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- System monitor
+local system_monitor = require("widgets.system_monitor")
+system_monitor.setup()
+gears.timer.start_new(5, function()
+    system_monitor.update()
+end)
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -154,23 +161,16 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Import widgets
     local clock = require("widgets.clock")
-    local cpu_monitor = require("widgets.cpu_monitor")
-    local gpu_monitor = require("widgets.gpu_monitor")
     local battery_monitor = require("widgets.battery_monitor")
 
     -- Setup widgets
     clock.setup()
-    cpu_monitor.setup()
-    gpu_monitor.setup()
     battery_monitor.setup()
 
     -- Update widgets
     gears.timer.start_new(10, function()
         clock.update()
-        cpu_monitor.update()
-        gpu_monitor.update()
         battery_monitor.update()
-
         return true
     end)
 
@@ -221,23 +221,11 @@ awful.screen.connect_for_each_screen(function(s)
                 layout = wibox.layout.fixed.horizontal,
                 spacing = 5,
                 battery_monitor.widget,
-                -- gpu_monitor.widget,
-                cpu_monitor.widget,
                 clock.widget,
             }
         },
     }
 end)
--- }}}
-
-
-
--- {{{ Mouse bindings
--- Change workspace on mouse scroll
--- root.buttons(gears.table.join(
---     awful.button({ }, 4, awful.tag.viewnext),
---     awful.button({ }, 5, awful.tag.viewprev)
--- ))
 -- }}}
 
 
@@ -253,6 +241,8 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioPrev", function () awful.spawn.with_shell("playerctl previous") end),
     awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn.with_shell("xbacklight -inc 10") end),
     awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn.with_shell("xbacklight -dec 10") end),
+
+    awful.key({ modkey }, "x", system_monitor.toggle),
 
     -- Screenshot
     awful.key({ "Shift" }, "Print", function () awful.spawn.with_shell("maim | xclip -selection clipboard -target image/png -i") end,
