@@ -1,0 +1,19 @@
+{
+    "layer": "top",
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["network", "temperature", "wireplumber", "battery", "clock"],
+    "network": {
+        "format-wifi": " {essid}"
+    },
+    "temperature": {
+        "format": " {temperatureC}°C"
+    },
+    "wireplumber": {
+        "format": " {volume}%"
+    },
+    "battery": {
+        "format": " {capacity}%",
+        "format-charging": " {capacity}%"
+    }
+}
