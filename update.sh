@@ -19,3 +19,7 @@ echo 'Copied neovim configuration'
 cp -r -f ./sway ~/.config/sway
 echo 'Copied sway configuration'
 
+# fonts
+cp -r -f ./fonts ~/.local/share/fonts
+echo 'Copied fonts'
+

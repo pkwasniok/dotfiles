@@ -93,5 +93,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Alias
 alias g=git
-alias repos=cd ~/Repos
 alias vi=nvim
