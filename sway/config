@@ -1,13 +1,10 @@
-exec mako
-exec gammastep -l 50:18 -t 6500:4000
-
 # =====================
 # ===== Variables =====
 # =====================
 
 set $mod Mod4
 set $term kitty
-set $menu dmenu_path | wmenu | xargs swaymsg exec --
+set $menu wofi --show run
 set $left h
 set $down j
 set $up k
@@ -39,9 +36,6 @@ output eDP-1 res 1920x1080 pos 0 0
 # External display
 output HMDI-A-1 res 1920x1080 pos -1980 0
 
-# Wallpaper
-output * bg #000000 solid_color
-
 # Clamshell mode
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
@@ -70,6 +64,30 @@ bindsym Shift+Print exec grim - | wl-copy && notify-send -t 2000 'Captured scree
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
 bindsym XF86AudioMute        exec wpctl set-mute @DEFAULT_SINK@ toggle
+
+# Backlight
+bindsym XF86MonBrightnessUp   exec brightnessctl set  5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set  5%-
+
+# ======================
+# ===== Appearance =====
+# ======================
+
+gaps inner 10
+
+default_border pixel 2
+
+output "*" bg #000000 solid_color
+
+# =================
+# ===== Other =====
+# =================
+
+exec waybar
+
+exec mako
+
+exec gammastep -l 50:18 -t 6500:4000
 
 
 
@@ -209,18 +227,5 @@ mode "resize" {
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 include /etc/sway/config.d/*
