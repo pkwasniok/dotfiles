@@ -4,14 +4,8 @@
 }
 
 window#waybar {
-    background-color: transparent;
-    color: #ffffff;
-}
-
-
-.modules-left, .modules-right {
-    background-color: #171717;
-    margin: 4px;
+    background-color: #080808;
+    color: #f0f0f0;
 }
 
 
@@ -46,8 +40,9 @@ button:hover {
 
 #workspaces button {
     padding: 0 5px;
-    color: #ffffff;
+    color: #f0f0f0;
     background-color: transparent;
+    border-bottom: 2px solid transparent;
 }
 
 #workspaces button:hover {
@@ -55,7 +50,7 @@ button:hover {
 }
 
 #workspaces button.focused {
-    font-weight: bold;
+    border-bottom: 2px solid #f0f0f0;
 }
 
 #workspaces button.urgent {
