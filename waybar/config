@@ -73,6 +73,7 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "wireplumber": {
-    	"format": " {volume}%"
+    	"format": " {volume}%",
+	"format-muted": " MUTED"
     }
 }
