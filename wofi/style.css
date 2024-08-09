@@ -1,0 +1,26 @@
+window {
+    background-color: #080808;
+    color: #f0f0f0;
+}
+
+#outer-box {
+    padding: 4px;
+}
+
+#input {
+    background-color: transparent;
+    border: none;
+    color: #f0f0f0;
+    outline: transparent;
+
+    border-radius: 0px;
+}
+
+#entry {
+    background-color: transparent;
+}
+
+#entry:selected {
+    outline: none;
+    border-left: 2px solid #f0f0f0
+}

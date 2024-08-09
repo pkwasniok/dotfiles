@@ -27,6 +27,10 @@ echo 'Copied waybar configuration'
 cp -r -f ./mako ~/.config/
 echo 'Copied mako configuration'
 
+# wofi
+cp -r -f ./wofi ~/.config/
+echo 'Copied wofi configuration'
+
 # mercurial
 cp -r -f ./hg ~/.config/
 echo 'Copied mercurial configuration'
