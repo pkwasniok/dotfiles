@@ -23,6 +23,14 @@ echo 'Copied sway configuration'
 cp -r -f ./waybar/* ~/.config/waybar/
 echo 'Copied waybar configuration'
 
+# mako
+cp -r -f ./mako ~/.config/
+echo 'Copied mako configuration'
+
+# mercurial
+cp -r -f ./hg ~/.config/
+echo 'Copied mercurial configuration'
+
 # fonts
 cp -r -f ./fonts/* ~/.local/share/fonts/
 echo 'Copied fonts'
