@@ -35,6 +35,10 @@ echo 'Copied wofi configuration'
 cp -r -f ./hg ~/.config/
 echo 'Copied mercurial configuration'
 
+# git
+cp -r -f ./git ~/.config/
+echo 'Copied git configuration'
+
 # fonts
 cp -r -f ./fonts/* ~/.local/share/fonts/
 echo 'Copied fonts'

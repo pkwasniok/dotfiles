@@ -1,0 +1,10 @@
+[core]
+editor = nvim
+
+[user]
+name = Patryk Kwaśniok
+email = kwasniokpatryk@gmail.com
+
+[init]
+defaultBranch = main
+
