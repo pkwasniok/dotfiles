@@ -1,4 +1,4 @@
--- Neovim configuration file by pkwasniok (01.2024)
+-- Neovim configuration by pkwasniok
 
 -- Plugins
 require("packer").startup(function (use)
@@ -24,7 +24,7 @@ vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 10
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
@@ -44,4 +44,35 @@ vim.keymap.set({"t"}, "<ESC>", "<C-\\><C-N>")
 
 vim.keymap.set({"n", "v"}, "<C-j>", "<C-d>zz")
 vim.keymap.set({"n", "v"}, "<C-k>", "<C-u>zz")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

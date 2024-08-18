@@ -3,43 +3,47 @@
 # This script is used to propagate all configuration files
 # from this repository across whole system.
 
+# pacman
+sudo pacman -S --needed --noconfirm - < ./pacman/packages.txt
+echo '--> Synced packages'
+
 # zsh
 cp -r -f ./zsh/.zshrc ~/
-echo 'Copied zsh configuration'
+echo '--> Copied zsh configuration'
 
 # kitty
 cp -r -f ./kitty/* ~/.config/kitty/
-echo 'Copied kitty configuration'
+echo '--> Copied kitty configuration'
 
 # neovim
 cp -r -f ./nvim/* ~/.config/nvim/
-echo 'Copied neovim configuration'
+echo '--> Copied neovim configuration'
 
 # sway
 cp -r -f ./sway/* ~/.config/sway/
-echo 'Copied sway configuration'
+echo '--> Copied sway configuration'
 
 # waybar
 cp -r -f ./waybar/* ~/.config/waybar/
-echo 'Copied waybar configuration'
+echo '--> Copied waybar configuration'
 
 # mako
 cp -r -f ./mako ~/.config/
-echo 'Copied mako configuration'
+echo '--> Copied mako configuration'
 
 # wofi
 cp -r -f ./wofi ~/.config/
-echo 'Copied wofi configuration'
+echo '--> Copied wofi configuration'
 
 # mercurial
 cp -r -f ./hg ~/.config/
-echo 'Copied mercurial configuration'
+echo '--> Copied mercurial configuration'
 
 # git
 cp -r -f ./git ~/.config/
-echo 'Copied git configuration'
+echo '--> Copied git configuration'
 
 # fonts
 cp -r -f ./fonts/* ~/.local/share/fonts/
-echo 'Copied fonts'
+echo '--> Copied fonts'
 
