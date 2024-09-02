@@ -1,0 +1,8 @@
+#TabsToolbar, #sidebar-header {
+  display: none !important;
+}
+
+#sidebar-splitter {
+  width: 1px !important;
+}
+

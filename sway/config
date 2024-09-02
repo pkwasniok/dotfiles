@@ -77,7 +77,7 @@ gaps inner 10
 
 default_border pixel 2
 
-output "*" bg #080808 solid_color
+output "*" bg ~/.config/sway/wallpaper_1.jpg stretch
 
 # =================
 # ===== Other =====

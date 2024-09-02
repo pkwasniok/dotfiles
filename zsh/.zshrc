@@ -91,6 +91,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Path
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/opt/mikrotik-winbox"
+
 # Alias
 alias g=git
 alias vi=nvim
