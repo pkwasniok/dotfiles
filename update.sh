@@ -43,6 +43,10 @@ echo '--> Copied mercurial configuration'
 cp -r -f ./git ~/.config/
 echo '--> Copied git configuration'
 
+# gpg
+cp -r -f ./gpg/* ~/.gnupg/
+echo '--> Copied gpg configuration'
+
 # fonts
 cp -r -f ./fonts/* ~/.local/share/fonts/
 echo '--> Copied fonts'
