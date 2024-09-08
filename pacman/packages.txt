@@ -1,3 +1,18 @@
+neovim
+
+man
+man-db
+
+git
+mercurial
+github-cli
+
+docker
+docker-buildx
+docker-compose
+
+flatpak
+
 zsh
 base-devel
 util-linux
@@ -11,9 +26,6 @@ avr-libc
 avr-gdb
 avrdude
 minicom
-git
-mercurial
-github-cli
 networkmanager
 sway
 swaybg
@@ -29,8 +41,5 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xorg-xwayland
-docker
-docker-buildx
-docker-compose
 dolphin
 vlc

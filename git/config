@@ -4,7 +4,14 @@ editor = nvim
 [user]
 name = Patryk Kwaśniok
 email = kwasniokpatryk@gmail.com
+signingkey = ~/.ssh/github.pub
 
 [init]
 defaultBranch = main
+
+[commit]
+gpgsign = true
+
+[gpg]
+format = ssh
 
