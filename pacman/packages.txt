@@ -1,3 +1,13 @@
+base-devel
+util-linux
+zig
+
+networkmanager
+
+zsh
+
+gnupg
+
 neovim
 
 man
@@ -7,26 +17,23 @@ git
 mercurial
 github-cli
 
+curl
+wget
+
 docker
 docker-buildx
 docker-compose
 
 flatpak
 
-zsh
-base-devel
-util-linux
-curl
-wget
+
+
 gnu-netcat
-zig
-zls
 avr-gcc
 avr-libc
 avr-gdb
 avrdude
 minicom
-networkmanager
 sway
 swaybg
 waybar

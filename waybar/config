@@ -2,14 +2,13 @@
     "layer": "top",
     "position": "top",
     "spacing": 4,
+    "height": 26,
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad",
-        "custom/media"
+        "hyprland/workspaces",
+        "hyprland/scratchpad",
     ],
     "modules-center": [
-        "sway/window"
+        "hyprland/window"
     ],
     "modules-right": [
         "wireplumber",
