@@ -6,6 +6,10 @@
 window#waybar {
     background-color: rgb(30, 30, 46);
     color: rgb(205, 214, 244);
+
+    border-bottom: 2px solid rgb(108, 112, 134);
+
+    padding-bottom: 4px;
 }
 
 
@@ -31,25 +35,21 @@ window#waybar.chromium {
     background: transparent;
 
     border: none;
-    border-radius: 0;
-    border-top: 2px solid transparent;
 
     transition: none;
 }
 
 #workspaces button:hover {
-    border-top: 2px solid rgb(205, 214, 244);
-
     box-shadow: none;
     text-shadow: none;
 }
 
 #workspaces button.focused {
-    border-top: 2px solid rgb(205, 214, 244);
+    color: rgb(180, 190, 254);
 }
 
 #workspaces button.urgent {
-    border-top: 2px solid rgb(243, 139, 168);
+    color: rgb(243, 139, 168);
 }
 
 
@@ -64,10 +64,8 @@ window#waybar.chromium {
 #tray,
 #scratchpad {
     padding: 0 10px;
-    color: #ffffff;
+    color: rgb(205, 214, 244);
     background-color: transparent;
-
-    border-top: 2px solid transparent;
 }
 
 #clock:hover,
@@ -77,7 +75,6 @@ window#waybar.chromium {
 #temperature:hover,
 #network:hover,
 #wireplumber:hover {
-    border-top: 2px solid #f0f0f0;
 }
 
 

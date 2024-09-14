@@ -23,10 +23,6 @@ echo '--> Copied neovim configuration'
 cp -r -f ./sway/* ~/.config/sway/
 echo '--> Copied sway configuration'
 
-# hyprland
-cp -r -f ./hypr/* ~/.config/hypr/
-echo '--> Copied hyprland configuration'
-
 # waybar
 cp -r -f ./waybar/* ~/.config/waybar/
 echo '--> Copied waybar configuration'
