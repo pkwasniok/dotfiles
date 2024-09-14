@@ -1,0 +1,69 @@
+# System
+base
+linux
+linux-lts
+linux-firmware
+networkmanager
+
+# Base
+amd-ucode
+sof-firmware
+base-devel
+btrfs-progs
+sudo
+
+# Audio
+pipewire
+pipewire-audio
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+
+# Graphics
+mesa
+vulkan-radeon
+
+# Utils
+fish
+git
+github-cli
+mercurial
+neovim
+make
+wget
+curl
+man
+man-db
+gnupg
+htop
+
+# Containers
+docker
+docker-buildx
+docker-compose
+flatpak
+
+# Desktop
+sway
+swaybg
+mako
+grim
+slurp
+wofi
+waybar
+kitty
+wl-clipboard
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+xdg-desktop-portal-kde
+xdg-user-dirs
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+
+# Apps
+dolphin
+firefox
+firefox-developer-edition
+

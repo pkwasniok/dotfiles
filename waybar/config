@@ -4,11 +4,11 @@
     "spacing": 4,
     "height": 26,
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/scratchpad",
+        "sway/workspaces",
+        "sway/scratchpad",
     ],
     "modules-center": [
-        "hyprland/window"
+        "sway/window"
     ],
     "modules-right": [
         "wireplumber",

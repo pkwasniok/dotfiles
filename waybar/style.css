@@ -4,8 +4,8 @@
 }
 
 window#waybar {
-    background-color: rgba(8, 8, 8, 0.95);
-    color: #f0f0f0;
+    background-color: rgb(30, 30, 46);
+    color: rgb(205, 214, 244);
 }
 
 
@@ -38,18 +38,18 @@ window#waybar.chromium {
 }
 
 #workspaces button:hover {
-    border-top: 2px solid #f0f0f0;
+    border-top: 2px solid rgb(205, 214, 244);
 
     box-shadow: none;
     text-shadow: none;
 }
 
-#workspaces button.active {
-    border-top: 2px solid #f0f0f0;
+#workspaces button.focused {
+    border-top: 2px solid rgb(205, 214, 244);
 }
 
 #workspaces button.urgent {
-    border-top: 2px solid #ff0000;
+    border-top: 2px solid rgb(243, 139, 168);
 }
 
 

@@ -1,0 +1,100 @@
+# Bootloader
+
+## Loader
+
+1. `# bootctl install`
+
+2. `/boot/loader/loader.conf`
+
+```
+default  archlinux.conf
+timeout  5
+console-mode auto
+editor   yes
+```
+
+## Entries
+
+1. `/boot/loader/entries/archlinux.conf`
+
+```
+title   Archlinux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+```
+
+2. `/boot/loader/entries/archlinux-lts.conf`
+
+```
+title   Archlinux (lts)
+linux   /vmlinuz-linux-lts
+initrd  /initramfs-linux-lts.img
+options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+```
+
+3. `/boot/loader/entries/archlinux-fallback.conf`
+
+```
+title   Archlinux (fallback)
+linux   /vmlinuz-linux
+initrd  /initramfs-linux-fallback.img
+options root=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx rw
+```
+
+# Localization
+
+## Timezone
+
+1. `# timedatectl set-timezone Europe/Warsaw`
+
+## Language
+
+1. `# locale-gen`
+2. `# localectl set-locale en_US.UTF-8`
+3. `# localectl set-keymap pl`
+
+# Clock
+
+## Hardware
+
+1. `# hwclock --systohc`
+
+## Synchronization
+
+1. `# systemctl enable --now systemd-timesyncd`
+
+# Network
+
+## Hostname
+
+1. `/etc/hostname`
+
+```
+patryk-{alpha|beta}
+```
+
+# Users
+
+## Root
+
+1. `# passwd`
+
+## User
+
+1. `# useradd --btrfs-subvolume-home --create-home --user-group --shell /bin/fish patryk`
+2. `# usermod -aG adm uucp wheel docker patryk`
+3. `# passwd patryk`
+
+## Sudo
+
+1. `/etc/sudoers`
+
+# Desktop
+
+## Dirs
+
+1. `# xdg-user-dirs-update`
+
+# Dotfiles
+
