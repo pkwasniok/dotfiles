@@ -37,6 +37,7 @@ man
 man-db
 gnupg
 htop
+netcat
 
 # Containers
 docker

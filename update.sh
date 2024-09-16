@@ -3,13 +3,9 @@
 # This script is used to propagate all configuration files
 # from this repository across whole system.
 
-# pacman
-sudo pacman -S --needed --noconfirm - < ./pacman/packages.txt
-echo '--> Synced packages'
-
-# zsh
-cp -r -f ./zsh/.zshrc ~/
-echo '--> Copied zsh configuration'
+# fish
+cp -r -f ./fish/* ~/.config/fish/
+echo '--> Copied fish configuration'
 
 # kitty
 cp -r -f ./kitty/* ~/.config/kitty/
