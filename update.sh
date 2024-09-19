@@ -3,6 +3,10 @@
 # This script is used to propagate all configuration files
 # from this repository across whole system.
 
+# pacman
+cp pacman/pacman.conf /etc/pacman.conf
+echo '--> Copied pacman configuration'
+
 # fish
 cp -r -f ./fish/* ~/.config/fish/
 echo '--> Copied fish configuration'
