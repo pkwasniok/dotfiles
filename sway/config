@@ -7,7 +7,7 @@ include catppuccin-mocha
 
 set $mod Mod4
 set $term kitty
-set $menu wofi --show run
+set $menu wofi --show drun
 set $left h
 set $down j
 set $up k

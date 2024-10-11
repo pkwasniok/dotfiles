@@ -1,9 +1,8 @@
-# System
+# Linux
 base
 linux
 linux-lts
 linux-firmware
-networkmanager
 
 # Base
 amd-ucode
@@ -11,6 +10,11 @@ sof-firmware
 base-devel
 btrfs-progs
 sudo
+
+# Networking
+networkmanager
+wireguard-tools
+systemd-resolvconf
 
 # Audio
 pipewire
@@ -38,6 +42,14 @@ man-db
 gnupg
 htop
 netcat
+nmap
+
+# Programming
+cmake
+arm-none-eabi-gcc
+arm-none-eabi-gdb
+arm-none-eabi-binutils
+arm-none-eabi-newlib
 
 # Containers
 docker
