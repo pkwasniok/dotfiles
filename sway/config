@@ -131,7 +131,7 @@ bindsym XF86AudioMute        exec wpctl set-mute @DEFAULT_SINK@ toggle
 # Media: Player
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl prev
+bindsym XF86AudioPrev exec playerctl previous
 
 # Media: Brightness
 bindsym XF86MonBrightnessUp   exec brightnessctl set  5%+
