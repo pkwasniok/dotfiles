@@ -1,0 +1,18 @@
+alpha:
+  type: workstation
+  cpu: 'AMD Ryzen 5 7500X'
+  gpu: 'AMD Radeon RX 7600 (Sapphire PULSE; 8 GB)'
+  mobo: 'GIGABYTE X670 GAMING X AX V2'
+  memory: 'ADATA XPG Langer Blade (2x16 GB; DDR5; 6000 MHz; CL30)'
+  storage: 'Lexar NM790 (1 TB; PCIe 4.0; NVMe)'
+  cooling: 'ENDORFY Fera 5 Dual Fan (120 mm)'
+  psu: 'ENDORFY Vero L5 (500 W; 80 Plus Bronze)'
+  chassis: 'Zalman I4 (Black)'
+
+beta:
+  type: laptop
+  model: 'ACER Swift 3 (SF314-57G-50C4)'
+  cpu: 'INTEL Core i5 1035G1'
+  memory: 'N/A (1x8 GB)'
+  storage: 'N/A (1 TB)'
+
