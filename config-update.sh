@@ -44,3 +44,7 @@ cp -r git/* ~/.config/git
 mkdir -p ~/.local/share/fonts
 cp -r fonts/* ~/.local/share/fonts
 
+# Steam library
+mkdir -p ~/.local/share/steam
+# flatpak override com.valvesoftware.Steam --filesystem="~/.local/share/steam"
+

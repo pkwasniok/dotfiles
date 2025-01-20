@@ -16,3 +16,6 @@ neovim
 # Internet
 firefox
 
+# Flatpaks
+com.valvesoftware.Steam
+
