@@ -38,3 +38,9 @@ cp -r nvim/* ~/.config/nvim
 mkdir -p ~/.config/git
 cp -r git/* ~/.config/git
 
+# ==== Other ====
+
+# Fonts
+mkdir -p ~/.local/share/fonts
+cp -r fonts/* ~/.local/share/fonts
+
