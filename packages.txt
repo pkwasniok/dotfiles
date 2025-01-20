@@ -1,82 +1,18 @@
-# Linux
-base
-linux
-linux-lts
-linux-firmware
+# Desktop environment
+sway
+waybar
+wofi
+mako
+kitty
 
-# Base
-amd-ucode
-sof-firmware
-base-devel
-btrfs-progs
-sudo
-
-# Networking
-networkmanager
-wireguard-tools
-systemd-resolvconf
-
-# Audio
-pipewire
-pipewire-audio
-pipewire-alsa
-pipewire-pulse
-pipewire-jack
-wireplumber
-
-# Graphics
-mesa
-vulkan-radeon
-
-# Utils
+# System tools
 fish
-git
-github-cli
-mercurial
-neovim
-make
-wget
-curl
-man
-man-db
-gnupg
-htop
-netcat
-nmap
-
-# Programming
-cmake
-arm-none-eabi-gcc
-arm-none-eabi-gdb
-arm-none-eabi-binutils
-arm-none-eabi-newlib
-
-# Containers
-docker
-docker-buildx
-docker-compose
 flatpak
 
-# Desktop
-sway
-swaybg
-mako
-grim
-slurp
-wofi
-waybar
-kitty
-wl-clipboard
-xdg-desktop-portal
-xdg-desktop-portal-wlr
-xdg-desktop-portal-kde
-xdg-user-dirs
-noto-fonts
-noto-fonts-cjk
-noto-fonts-emoji
+# Development tools
+git
+neovim
 
-# Apps
-dolphin
+# Internet
 firefox
-firefox-developer-edition
 
