@@ -7,4 +7,5 @@ flatpak install org.gimp.GIMP \
                 org.signal.Signal \
                 org.telegram.desktop \
                 com.valvesoftware.Steam
+                com.discordapp.Discord
 

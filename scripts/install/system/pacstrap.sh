@@ -9,5 +9,5 @@ pacstarp -K /mnt base linux linux-firmware sof-firmware networkmanager bluez amd
                  sway swaybg waybar mako wofi wl-clipboard noto-fonts ttf-font-awesome \
                  xdg-desktop-portal xdg-desktop-portal-wlr \
                  kitty firefox minicom github-cli \
-                 tlp
+                 tlp firewalld
 
