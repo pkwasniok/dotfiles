@@ -4,7 +4,7 @@ editor = nvim
 [user]
 name = Patryk Kwaśniok
 email = kwasniokpatryk@gmail.com
-signingkey = 8A91927DCD59254D563255975A1CF5FD43FA63F2
+signingkey = /home/patryk/.ssh/keys/sign-git.pub
 
 [init]
 defaultBranch = main
@@ -13,7 +13,7 @@ defaultBranch = main
 gpgsign = true
 
 [gpg]
-format = openpgp
+format = ssh
 
 [alias]
 st = status
