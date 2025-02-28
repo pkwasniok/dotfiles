@@ -1,6 +1,6 @@
 # 1. Install system packages
 echo "=> Installing system packages"
-pacstarp -K /mnt base linux linux-firmware sof-firmware networkmanager bluez amd-ucode edk2-shell \
+pacstarp -K /mnt base linux linux-lts linux-firmware sof-firmware networkmanager bluez amd-ucode edk2-shell \
                  sudo efibootmgr btrfs-progs bluez-utils \
                  man-db man-pages neovim tmux fish curl htop rsync \
                  base-devel openssh git gdb make \
