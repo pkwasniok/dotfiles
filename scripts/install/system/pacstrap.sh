@@ -6,7 +6,7 @@ pacstarp -K /mnt base linux linux-lts linux-firmware sof-firmware networkmanager
                  base-devel openssh git gdb make \
                  docker flatpak \
                  pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
-                 sway swaybg waybar mako wofi wl-clipboard grim slurp noto-fonts ttf-font-awesome \
+                 sway swaybg waybar mako wofi wl-clipboard grim slurp libnotify noto-fonts ttf-font-awesome \
                  xdg-desktop-portal xdg-desktop-portal-wlr \
                  kitty firefox minicom github-cli \
                  tlp firewalld
