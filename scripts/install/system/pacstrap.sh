@@ -9,5 +9,5 @@ pacstarp -K /mnt base linux linux-lts linux-firmware sof-firmware networkmanager
                  sway swaybg waybar mako wofi wl-clipboard grim slurp libnotify noto-fonts ttf-font-awesome \
                  xdg-desktop-portal xdg-desktop-portal-wlr \
                  kitty firefox minicom github-cli \
-                 tlp iptables-nft nftables
+                 tlp iptables
 
