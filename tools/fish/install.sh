@@ -1,5 +1,10 @@
 #!/bin/bash
 
-mkdir -p $HOME/.config/fish
-cp config.fish $HOME/.config/fish
+CONFIG=$HOME/.config/fish
+
+mkdir -p $CONFIG
+mkdir -p $CONFIG/functions
+
+cp config.fish $CONFIG
+cp prompt.fish $CONFIG/functions/fish_prompt.fish
 

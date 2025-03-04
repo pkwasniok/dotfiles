@@ -8,8 +8,4 @@ alias g="git"
 alias vi="nvim"
 alias suvi="sudo nvim"
 alias btctl="bluetoothctl"
-alias btconn="bluetoothctl devices Connected"
-alias vpnon="sudo wg-quick up protonvpn"
-alias vpnoff="sudo wg-quick down protonvpn"
-alias vpn="sudo wg"
 
