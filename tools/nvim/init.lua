@@ -13,6 +13,7 @@ require("packer").startup(function (use)
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-calc")
     use("hrsh7th/cmp-emoji")
 end)
 
@@ -29,11 +30,16 @@ cmp.setup({
         { name = "buffer" },
         { name = "path" },
         { name = "emoji" },
+        { name = "calc" },
     }),
     mapping = {
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()
+                if #cmp.get_entries() == 1 then
+                    cmp.confirm({ select = true })
+                else
+                    cmp.select_next_item()
+                end
             else
                 fallback()
             end
