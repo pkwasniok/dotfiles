@@ -9,12 +9,50 @@ require("packer").startup(function (use)
     use("nvim-lua/plenary.nvim")
     use({ "nvim-telescope/telescope.nvim", branch = '0.1.x' })
     use({ "ThePrimeagen/harpoon", branch = "harpoon2" })
+
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-emoji")
 end)
 
 -- Treesitter
 require("nvim-treesitter.configs").setup({
     ensure_installed = { "lua", "c", "php" },
     highlight = { enable = true },
+})
+
+-- Completion
+cmp = require("cmp")
+cmp.setup({
+    sources = cmp.config.sources({
+        { name = "buffer" },
+        { name = "path" },
+        { name = "emoji" },
+    }),
+    mapping = {
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                fallback()
+            end
+        end),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                fallback()
+            end
+        end),
+        ["<CR>"] = cmp.mapping(function(fallback)
+            if cmp.get_selected_entry() then
+                cmp.confirm()
+            else
+                fallback()
+            end
+        end)
+    },
 })
 
 -- Harpoon
@@ -69,5 +107,4 @@ vim.keymap.set({"n"}, "<C-u>", function() harpoon:list():select(1) end)
 vim.keymap.set({"n"}, "<C-i>", function() harpoon:list():select(2) end)
 vim.keymap.set({"n"}, "<C-o>", function() harpoon:list():select(3) end)
 vim.keymap.set({"n"}, "<C-p>", function() harpoon:list():select(4) end)
-
 
