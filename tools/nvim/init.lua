@@ -72,7 +72,6 @@ vim.cmd.colorscheme("catppuccin-mocha")
 vim.opt.mouse = ""
 
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
 
 vim.opt.ignorecase = true
@@ -101,16 +100,17 @@ vim.g.mapleader = " "
 
 vim.keymap.set({"t"}, "<ESC>", "<C-\\><C-N>")
 
-vim.keymap.set({"n", "v"}, "<C-j>", "<C-d>zz")
-vim.keymap.set({"n", "v"}, "<C-k>", "<C-u>zz")
+vim.keymap.set({"n", "v"}, "<C-d>", "<C-d>zz")
+vim.keymap.set({"n", "v"}, "<C-u>", "<C-u>zz")
 
 local builtin = require("telescope.builtin")
-vim.keymap.set({"n"}, "<leader>ff", builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set({"n", "v", "i"}, "<C-p>", builtin.find_files)
+vim.keymap.set({"n", "v", "i"}, "<A-p>", builtin.buffers)
 
 vim.keymap.set({"n"}, "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 vim.keymap.set({"n"}, "<leader>ha", function() harpoon:list():add() end)
-vim.keymap.set({"n"}, "<C-u>", function() harpoon:list():select(1) end)
-vim.keymap.set({"n"}, "<C-i>", function() harpoon:list():select(2) end)
-vim.keymap.set({"n"}, "<C-o>", function() harpoon:list():select(3) end)
-vim.keymap.set({"n"}, "<C-p>", function() harpoon:list():select(4) end)
+vim.keymap.set({"n"}, "<C-h>", function() harpoon:list():select(1) end)
+vim.keymap.set({"n"}, "<C-j>", function() harpoon:list():select(2) end)
+vim.keymap.set({"n"}, "<C-k>", function() harpoon:list():select(3) end)
+vim.keymap.set({"n"}, "<C-l>", function() harpoon:list():select(4) end)
 
