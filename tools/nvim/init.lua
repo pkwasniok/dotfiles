@@ -15,16 +15,53 @@ require("packer").startup(function (use)
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-calc")
     use("hrsh7th/cmp-emoji")
+
+    use("williamboman/mason.nvim")
 end)
 
+-- Options
+vim.opt.mouse = ""
+
+vim.opt.number = true
+vim.opt.numberwidth = 4
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+
+vim.opt.scrolloff = 10
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
+vim.opt.colorcolumn = "80"
+
+vim.opt.shell = "/bin/zsh"
+
+vim.opt.completeopt = "menuone,noselect"
+vim.opt.termguicolors = true
+
+vim.opt.hlsearch = false
+
+-- Colorscheme
+vim.cmd.colorscheme("catppuccin-mocha")
+
 -- Treesitter
-require("nvim-treesitter.configs").setup({
+local treesitter = require("nvim-treesitter.configs")
+treesitter.setup({
     ensure_installed = { "lua", "c", "php" },
     highlight = { enable = true },
 })
 
+-- Harpoon
+local harpoon = require("harpoon")
+harpoon:setup();
+
 -- Completion
-cmp = require("cmp")
+local cmp = require("cmp")
 cmp.setup({
     sources = cmp.config.sources({
         { name = "buffer" },
@@ -61,39 +98,9 @@ cmp.setup({
     },
 })
 
--- Harpoon
-local harpoon = require("harpoon")
-harpoon:setup();
-
--- Colorscheme
-vim.cmd.colorscheme("catppuccin-mocha")
-
--- Options
-vim.opt.mouse = ""
-
-vim.opt.number = true
-vim.opt.numberwidth = 4
-
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-
-vim.opt.scrolloff = 10
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
-
-vim.opt.colorcolumn = "80"
-
-vim.opt.shell = "/bin/zsh"
-
-vim.opt.completeopt = "menuone,noselect"
-vim.opt.termguicolors = true
-
-vim.opt.hlsearch = false
+-- Mason
+local mason = require("mason")
+mason.setup()
 
 -- Keymaps
 vim.g.mapleader = " "
