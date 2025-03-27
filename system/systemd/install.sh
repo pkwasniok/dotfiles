@@ -8,5 +8,7 @@ systemctl enable --now iptables.service
 
 systemctl enable --now docker.service
 
+systemctl enable --now reflector.service
+
 systemctl enable --now paccache.timer
 
