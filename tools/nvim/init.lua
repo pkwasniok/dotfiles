@@ -11,6 +11,7 @@ require("packer").startup(function (use)
     use({ "ThePrimeagen/harpoon", branch = "harpoon2" })
 
     use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
     use("hrsh7th/cmp-calc")
@@ -24,6 +25,7 @@ vim.opt.mouse = ""
 
 vim.opt.number = true
 vim.opt.numberwidth = 4
+vim.opt.signcolumn = "yes:1"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -46,6 +48,8 @@ vim.opt.termguicolors = true
 
 vim.opt.hlsearch = false
 
+vim.diagnostic.config({ virtual_text = true })
+
 -- Colorscheme
 vim.cmd.colorscheme("catppuccin-mocha")
 
@@ -64,6 +68,7 @@ harpoon:setup();
 local cmp = require("cmp")
 cmp.setup({
     sources = cmp.config.sources({
+        { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
         { name = "emoji" },
@@ -101,6 +106,23 @@ cmp.setup({
 -- Mason
 local mason = require("mason")
 mason.setup()
+
+-- LSP
+vim.lsp.config["*"] = {
+    root_markers = { ".git", ".hg" },
+}
+
+vim.lsp.config["lua"] = {
+    cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+}
+
+vim.lsp.config["c"] = {
+    cmd = { "clangd", "--background-index" },
+    filetypes = { "c", "h", "cpp", "hpp" },
+}
+
+vim.lsp.enable({ "lua", "c" })
 
 -- Keymaps
 vim.g.mapleader = " "
