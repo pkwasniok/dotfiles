@@ -9,3 +9,5 @@ alias vi="nvim"
 alias suvi="sudo nvim"
 alias btctl="bluetoothctl"
 
+alias rsync="rsync --progress"
+
