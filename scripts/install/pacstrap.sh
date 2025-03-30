@@ -2,7 +2,7 @@
 echo "=> Installing system packages"
 pacstarp -K /mnt base linux linux-lts linux-firmware sof-firmware networkmanager bluez amd-ucode edk2-shell \
                  sudo efibootmgr btrfs-progs bluez-utils pacman-contrib reflector \
-                 man-db man-pages neovim tmux fish curl htop rsync \
+                 man-db man-pages neovim tmux fish curl htop rsync ripgrep \
                  base-devel openssh git gdb make \
                  bzip2 bzip3 gzip xz zstd 7zip tar zip unzip \
                  docker flatpak \
