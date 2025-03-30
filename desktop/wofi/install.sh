@@ -1,5 +1,8 @@
 #!/bin/bash
 
-mkdir -p $HOME/.config/wofi
-cp style.css $HOME/.config/wofi
+CONFIG=$HOME/.config/wofi
+
+mkdir -p $CONFIG
+
+cp style.css $CONFIG/style.css
 

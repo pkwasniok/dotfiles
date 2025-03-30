@@ -1,5 +1,8 @@
 #!/bin/bash
 
-mkdir -p $HOME/.config/mako
-cp config $HOME/.config/mako
+CONFIG=$HOME/.config/mako
+
+mkdir -p $CONFIG
+
+cp config $CONFIG/config
 

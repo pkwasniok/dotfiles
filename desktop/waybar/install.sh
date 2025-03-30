@@ -1,6 +1,9 @@
 #!/bin/bash
 
-mkdir -p $HOME/.config/waybar
-cp config $HOME/.config/waybar
-cp style.css $HOME/.config/waybar
+CONFIG=$HOME/.config/waybar
+
+mkdir -p $CONFIG
+
+cp config $CONFIG/config
+cp style.css $CONFIG/style.css
 

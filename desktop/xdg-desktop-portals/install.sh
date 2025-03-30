@@ -1,6 +1,8 @@
 #/bin/bash
 
-mkdir -p $HOME/.config/xdg-desktop-portal
+CONFIG=$HOME/.config/xdg-desktop-portal/
 
-cp portals.conf  $HOME/.config/xdg-desktop-portal/portals.conf
+mkdir -p $CONFIG
+
+cp portals.conf  $CONFIG/portals.conf
 
