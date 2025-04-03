@@ -1,19 +1,27 @@
 window {
-    background-color: #080808;
-    color: #f0f0f0;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+
+    border: 2px solid #b4befe;
 }
 
 #outer-box {
-    padding: 4px;
+    padding: 5px;
 }
 
 #input {
     background-color: transparent;
     border: none;
-    color: #f0f0f0;
     outline: transparent;
 
-    border-radius: 0px;
+    border-radius: 0;
+    border-color: transparent;
+
+    color: #cdd6f4;
+}
+
+#input:focused {
+    box-shadow: none;
 }
 
 #entry {
@@ -21,6 +29,17 @@ window {
 }
 
 #entry:selected {
+    background-color: #b4befe;
+    color: #1e1e2e;
+
     outline: none;
-    border-left: 2px solid #f0f0f0
 }
+
+#text {
+    color: #cdd6f4;
+}
+
+#text:selected {
+    color: #1e1e2e;
+}
+
