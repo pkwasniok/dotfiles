@@ -4,6 +4,7 @@ flatpak install org.gimp.GIMP \
                 org.kde.okular \
                 org.blender.Blender \
                 org.freecad.FreeCAD \
+                org.kicad.KiCad \
                 org.signal.Signal \
                 org.telegram.desktop \
                 com.valvesoftware.Steam
