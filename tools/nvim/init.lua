@@ -35,6 +35,8 @@ vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
+vim.opt.wrap = false
+
 vim.opt.scrolloff = 10
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
