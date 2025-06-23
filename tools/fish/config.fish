@@ -10,4 +10,5 @@ alias suvi="sudo nvim"
 alias btctl="bluetoothctl"
 
 alias rsync="rsync --progress"
+alias ip="ip --color"
 
