@@ -11,4 +11,5 @@ alias btctl="bluetoothctl"
 
 alias rsync="rsync --progress"
 alias ip="ip --color"
+alias mv="mv -i"
 
