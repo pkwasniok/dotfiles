@@ -1,4 +1,5 @@
 cp playerctl.service /etc/systemd/user/playerctl.service
+cp swayidle.service /etc/systemd/user/swayidle.service
 
 systemctl enable --now NetworkManager.service
 
