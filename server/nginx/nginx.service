@@ -1,0 +1,14 @@
+[Unit]
+Description=nginx
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=patryk
+Group=patryk
+ExecStart=/usr/bin/docker compose -f /home/patryk/.config/nginx/docker-compose.yaml up
+ExecStop=/usr/bin/docker compose -f /home/patryk/.config/nginx/docker-compose.yaml down
+
+[Install]
+WantedBy=multi-user.target
+
