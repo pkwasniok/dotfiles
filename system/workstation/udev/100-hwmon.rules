@@ -1,0 +1,3 @@
+ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{device}=="0x14e3", RUN+="/bin/mkdir /dev/hwmon", RUN+="/bin/sh -c 'ln -s /sys$devpath /dev/hwmon/cpu'"
+ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{device}=="0x7480", RUN+="/bin/mkdir /dev/hwmon", RUN+="/bin/sh -c 'ln -s /sys$devpath /dev/hwmon/cpu'"
+
