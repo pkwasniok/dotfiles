@@ -1,3 +1,0 @@
-KERNEL=="uinput", OPTIONS+="static_node=uinput", MODE="0660", TAG+="uaccess"
-SUBSYSTEM=="input", ATTRS{name}=="8BitDo Ultimate 2C Wireless", MODE="0660", TAG+="uaccess"
-

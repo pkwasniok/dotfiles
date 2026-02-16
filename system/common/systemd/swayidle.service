@@ -1,9 +1,0 @@
-[Unit]
-Description=Swayidle
-
-[Service]
-ExecStart=/usr/bin/swayidle -w timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
-
-[Install]
-WantedBy=default.target
-
