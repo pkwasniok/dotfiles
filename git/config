@@ -1,0 +1,20 @@
+[core]
+editor = nvim
+
+[user]
+name = Patryk Kwaśniok
+email = kwasniokpatryk@gmail.com
+signingkey = /home/pkwasniok/.ssh/keyring/git-sign.pub
+
+[init]
+defaultBranch = main
+
+[commit]
+gpgsign = true
+
+[gpg]
+format = ssh
+
+[alias]
+st = status
+
