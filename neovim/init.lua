@@ -3,7 +3,7 @@
 -- Plugins
 require("packer").startup(function (use)
     use("wbthomason/packer.nvim")
-    -- use("catppuccin/nvim")
+    use("folke/tokyonight.nvim")
     use("nvim-treesitter/nvim-treesitter")
 
     use("nvim-lua/plenary.nvim")
@@ -19,6 +19,9 @@ require("packer").startup(function (use)
 
     use("williamboman/mason.nvim")
 end)
+
+-- Colorscheme
+vim.cmd.colorscheme("tokyonight-night")
 
 -- Options
 vim.opt.mouse = ""
@@ -107,9 +110,14 @@ local mason = require("mason")
 mason.setup()
 
 -- LSP
-vim.lsp.log.set_level("off")
+-- vim.lsp.log.set_level("error")
 vim.lsp.config["*"] = {
     root_markers = { ".git", ".hg" },
+}
+
+vim.lsp.config["c"] = {
+    cmd = { "clangd", "--background-index" },
+    filetypes = { "c", "cpp" },
 }
 
 vim.lsp.config["lua"] = {
@@ -123,14 +131,20 @@ vim.lsp.config["lua"] = {
 }
 
 vim.lsp.config["python"] = {
-    cmd = { "pylsp" },
+    cmd = { "ty", "server" },
     filetypes = { "python" },
     root_markers = { "pyproject.toml" },
 }
 
-vim.lsp.config["c"] = {
-    cmd = { "clangd", "--background-index" },
-    filetypes = { "c", "cpp" },
+vim.lsp.config["php"] = {
+    cmd = { "phpactor", "language-server" },
+    filetypes = { "php" },
+    root_markers = { "composer.json" },
+    workspace_required = true,
+    init_options = {
+        ["language_server_phpstan.enabled"] = false,
+        ["language_server_psalm.enabled"] = false,
+    },
 }
 
 vim.lsp.enable({ "lua", "c", "python" })
