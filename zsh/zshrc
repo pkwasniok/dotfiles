@@ -8,6 +8,7 @@ zstyle ':completion:*' menu select
 # ==== Aliases ====
 alias '..'='cd ..'
 alias 'g'='git'
+alias 'ls'='ls --color'
 alias 'l'='ls'
 alias 'll'='ls -l'
 alias 'vi'='nvim'
