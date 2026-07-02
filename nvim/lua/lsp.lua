@@ -19,10 +19,12 @@ lsp.config["c"] = {
     root_markers = { "CMakeLists.txt" },
 }
 
+lsp.enable({"python", "c"})
+
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function()
-        keymap.set({"n"}, "gd", lsp.buf.definition)
-        keymap.set({"n"}, "gD", lsp.buf.declaration)
+    callback = function(e)
+        vim.keymap.set({"n"}, "gd", lsp.buf.definition)
+        vim.keymap.set({"n"}, "gD", lsp.buf.declaration)
 	end
 })
 
