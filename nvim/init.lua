@@ -28,6 +28,7 @@ require("lsp")
 -- Plugins
 require("plugins")
 
+-- Treesitter
 vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         pcall(vim.treesitter.start)

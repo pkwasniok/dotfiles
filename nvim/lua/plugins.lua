@@ -18,5 +18,6 @@ keymap.set({"n"}, "<C-l>", function() harpoon:list():select(4) end)
 local telescope = require("telescope.builtin")
 
 keymap.set({"n", "v", "i"}, "<C-p>", telescope.find_files)
-keymap.set({"n", "v", "i"}, "<A-p>", telescope.buffers)
+keymap.set({"n", "v", "i"}, "<C-g>", telescope.live_grep)
+keymap.set({"n", "v", "i"}, "<C-s>", telescope.lsp_document_symbols)
 

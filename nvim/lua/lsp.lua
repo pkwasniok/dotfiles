@@ -19,7 +19,7 @@ lsp.config["c"] = {
     root_markers = { "CMakeLists.txt" },
 }
 
-lsp.enable({"python", "c"})
+lsp.enable({ "python", "c" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(e)
