@@ -18,11 +18,12 @@ keymap.set({"n"}, "<C-j>", function() harpoon:list():select(2) end)
 keymap.set({"n"}, "<C-k>", function() harpoon:list():select(3) end)
 keymap.set({"n"}, "<C-l>", function() harpoon:list():select(4) end)
 
--- Telescope
+-- FuzzyFinder
 
-local telescope = require("telescope.builtin")
+local fuzzyfinder = require("fzf-lua")
 
-keymap.set({"n", "v", "i"}, "<C-p>", telescope.find_files)
-keymap.set({"n", "v", "i"}, "<C-g>", telescope.live_grep)
-keymap.set({"n", "v", "i"}, "<C-s>", telescope.lsp_document_symbols)
+fuzzyfinder.setup({})
+
+keymap.set({"n"}, "<C-p>", fuzzyfinder.global)
+keymap.set({"n"}, "<C-f>", fuzzyfinder.builtin)
 
