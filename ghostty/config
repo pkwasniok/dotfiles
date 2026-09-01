@@ -1,3 +1,8 @@
 font-family = "Fantasque Sans Mono"
+font-feature = -calt, -liga, -dlig
 font-size = 14
+
+shell-integration = zsh
+
+mouse-hide-while-typing = true
 
