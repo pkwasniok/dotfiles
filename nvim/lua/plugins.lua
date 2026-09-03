@@ -5,6 +5,18 @@ local keymap = vim.keymap
 local treesitter = require("nvim-treesitter")
 treesitter.install({ "python", "c", "cpp", "yaml", "json" })
 
+-- Blink
+
+local blink = require("blink.cmp")
+
+blink.setup({
+	completion = {
+		ghost_text = {
+			enabled = true,
+		},
+	},
+})
+
 -- Harpooon
 
 local harpoon = require("harpoon")

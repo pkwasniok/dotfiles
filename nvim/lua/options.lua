@@ -29,8 +29,3 @@ opt.cursorlineopt = "number"
 -- Column
 opt.colorcolumn = "80"
 
--- Completion
-opt.complete = ".,o"
-opt.autocomplete = true
-opt.completeopt = "menuone,noselect,popup,fuzzy"
-

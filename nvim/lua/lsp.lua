@@ -3,20 +3,16 @@ local mason = require("mason")
 
 mason.setup()
 
-lsp.config["*"] = {
-    root_markers = { ".git", ".hg", "Makefile" },
-}
-
 lsp.config["python"] = {
     cmd = { "ty", "server" },
     filetypes = { "python" },
-    root_markers = { "pyproject.toml" },
+    root_markers = { ".git", "pyproject.toml" },
 }
 
 lsp.config["c"] = {
     cmd = { "clangd", "--background-index" },
     filetypes = { "c", "cpp" },
-    root_markers = { "CMakeLists.txt" },
+    root_markers = { "Makefile", ".git", "CMakeLists.txt", "Makefile" },
 }
 
 lsp.enable({ "python", "c" })
