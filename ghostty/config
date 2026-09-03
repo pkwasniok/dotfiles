@@ -1,6 +1,5 @@
-font-family = "Fantasque Sans Mono"
-font-feature = -calt, -liga, -dlig
-font-size = 14
+font-family = "Maple Mono NL Regular"
+font-size = 13
 
 shell-integration = zsh
 
