@@ -36,12 +36,9 @@ local fuzzyfinder = require("fzf-lua")
 
 fuzzyfinder.setup({})
 
-keymap.set({"n"}, "<C-p>", fuzzyfinder.global)
+keymap.set({"n"}, "f", fuzzyfinder.global)
 keymap.set({"n"}, "<C-f>", fuzzyfinder.builtin)
+keymap.set({"n"}, "<S-f>", fuzzyfinder.lsp_document_symbols)
 
--- Fidget
-
-local fidget = require("fidget")
-
-fidget.setup()
+keymap.set({"i", "v"}, "<C-p>", fuzzyfinder.global)
 

@@ -13,7 +13,6 @@ vim.pack.add({
     { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
 	{ src = "https://github.com/Saghen/blink.lib" },
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.10.2" },
-	{ src = "https://github.com/j-hui/fidget.nvim", version = "v2.0.0" },
 })
 
 -- Colorscheme

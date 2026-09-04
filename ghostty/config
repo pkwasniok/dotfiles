@@ -1,4 +1,5 @@
 font-family = "Iosevka"
+font-feature = -calt, -liga, -dlig
 font-size = 14
 
 shell-integration = zsh
