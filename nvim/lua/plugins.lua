@@ -39,3 +39,9 @@ fuzzyfinder.setup({})
 keymap.set({"n"}, "<C-p>", fuzzyfinder.global)
 keymap.set({"n"}, "<C-f>", fuzzyfinder.builtin)
 
+-- Fidget
+
+local fidget = require("fidget")
+
+fidget.setup()
+
