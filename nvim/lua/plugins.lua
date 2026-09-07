@@ -36,9 +36,8 @@ local fuzzyfinder = require("fzf-lua")
 
 fuzzyfinder.setup({})
 
-keymap.set({"n"}, "f", fuzzyfinder.global)
-keymap.set({"n"}, "<C-f>", fuzzyfinder.builtin)
-keymap.set({"n"}, "<S-f>", fuzzyfinder.lsp_document_symbols)
-
-keymap.set({"i", "v"}, "<C-p>", fuzzyfinder.global)
+keymap.set({"n"}, "<C-p>", fuzzyfinder.files)
+keymap.set({"n"}, "<S-p>", fuzzyfinder.builtin)
+keymap.set({"n"}, "<C-s>", fuzzyfinder.treesitter)
+keymap.set({"n"}, "<S-s>", fuzzyfinder.lsp_document_symbols)
 
