@@ -16,6 +16,7 @@ opt.smartindent = true
 opt.wrap = false
 
 -- Search
+opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = false
 

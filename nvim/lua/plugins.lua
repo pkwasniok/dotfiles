@@ -3,7 +3,6 @@ local keymap = vim.keymap
 -- Treesitter
 
 local treesitter = require("nvim-treesitter")
-treesitter.install({ "python", "c", "cpp", "yaml", "json" })
 
 -- Blink
 
