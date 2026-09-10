@@ -5,8 +5,8 @@ require('vim._core.ui2').enable()
 
 -- Plugins
 vim.pack.add({
+	{ src = "https://github.com/neanias/everforest-nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/folke/tokyonight.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
     { src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
@@ -16,7 +16,7 @@ vim.pack.add({
 })
 
 -- Colorscheme
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("everforest")
 
 -- Options
 require("options")
