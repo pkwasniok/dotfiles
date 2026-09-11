@@ -3,19 +3,7 @@ local mason = require("mason")
 
 mason.setup()
 
-lsp.config["python"] = {
-    cmd = { "ty", "server" },
-    filetypes = { "python" },
-    root_markers = { ".git", "pyproject.toml" },
-}
-
-lsp.config["c"] = {
-    cmd = { "clangd", "--background-index" },
-    filetypes = { "c", "cpp" },
-    root_markers = { ".git", "CMakeLists.txt", "Makefile" },
-}
-
-lsp.enable({ "python", "c" })
+lsp.enable({ "clangd", "ty" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(e)
