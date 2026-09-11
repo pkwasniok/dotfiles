@@ -12,7 +12,7 @@ lsp.config["python"] = {
 lsp.config["c"] = {
     cmd = { "clangd", "--background-index" },
     filetypes = { "c", "cpp" },
-    root_markers = { "Makefile", ".git", "CMakeLists.txt", "Makefile" },
+    root_markers = { ".git", "CMakeLists.txt", "Makefile" },
 }
 
 lsp.enable({ "python", "c" })

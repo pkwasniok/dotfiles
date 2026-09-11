@@ -9,8 +9,11 @@ opt.signcolumn = "yes:1"
 
 -- Line indent
 opt.tabstop = 4
+opt.softtabstop = 4
 opt.shiftwidth = 4
+opt.expandtab = true
 opt.smartindent = true
+opt.autoindent = false
 
 -- Line wrap
 opt.wrap = false
