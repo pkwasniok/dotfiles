@@ -15,6 +15,12 @@ gpgsign = true
 [gpg]
 format = ssh
 
-[alias]
-st = status
+[merge]
+tool = nvim
+
+[mergetool]
+keepBackup = false
+
+[mergetool "nvim"]
+cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 
